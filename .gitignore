@@ -1,2 +1,6 @@
 Pretrained_Model
 .DS_Store
+*.mp4
+*.xml
+*.pyc
+*.iml
