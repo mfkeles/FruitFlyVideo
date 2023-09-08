@@ -4,3 +4,9 @@ Pretrained_Model
 *.xml
 *.pyc
 *.iml
+FlyTrainingData
+wandb
+lightning_logs
+Prediction_Data
+wandb_checkpoints/
+__pycache__/
