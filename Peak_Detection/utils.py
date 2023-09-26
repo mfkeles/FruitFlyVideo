@@ -14,6 +14,15 @@ def read_pickle(filename):
     return loaded_file
 
 
+def create_filtered_input_data(fly, experiment, features, bouts_dict):
+    if bouts_dict[fly]['Annotation'][experiment]:
+        input_data = bouts_dict[fly][features[0]][experiment].reshape(-1, 1)
+        for i in range(1, len(features)):
+            input_data = np.concatenate((input_data, bouts_dict[fly][features[i]][experiment](-1, 1)), axis=1)
+
+    return input_data
+
+
 def create_input_data(fly, experiment, features, bouts_dict):
     input_data = bouts_dict[fly][features[0]][experiment].reshape(-1,1)
     for i in range(1, len(features)):
@@ -76,13 +85,15 @@ def create_config(features = ['distance.origin-prob','distance.head-prob', 'pose
 
 
 def get_model_prediction(fly, config, bouts_dict):
-    input_data = create_input_data(fly = fly.name,
+    input_data = create_filtered_input_data(fly = fly.name,
                                    experiment = int(fly.trial_id),
                                    features = config['features'],
                                    bouts_dict = bouts_dict)
 
         
     info_df = pd.DataFrame(input_data, columns = config['features'])
+
+
 
     if config['add_mv_stats']:
         info_df = add_mv_stats(info_df)
@@ -202,6 +213,7 @@ def evaluate_model(fly_db, config, bouts_dict):
     results = evaluate_results(all_results)
     results_g = evaluate_results(all_results_group)
     return results, results_g
+
 
 
 ######## Post Processing ########
