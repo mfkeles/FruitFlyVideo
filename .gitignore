@@ -13,3 +13,10 @@ __pycache__/
 Peak_Detection/all_peak_output
 Peak_Detection/bouts_dict.pkl
 Peak_Detection/true_annotations.pkl
+Peak_Detection/Fig_1 True.png
+Peak_Detection/Fig_1 True.pdf
+Peak_Detection/Fig_1 False.pdf
+bouts_dict.pkl
+Peak_Detection/sliced_dict_of_dfs.pkl
+Peak_Detection/sliced_dict_of_dfs.pkl
+Peak_Detection/sliced_dict_of_dfs.pkl
